@@ -4,27 +4,8 @@
 ## Appropriately labels the data set with descriptive variable names.
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-##initialise empty table
-##for each subject
-##    for each activity
-##        compute the mean for all rows where activity == 'activity' and subject == 'subject'
-##    add record to table
-##write table to database
 
-# folder - test
-# X_test - 2947 rows, 561 cols - features.txt contains the column names
-# x_test<-read.table("./UCI HAR Dataset/test/X_test.txt",sep="",header=FALSE)
-# y_test - 2947 rows
-# subject_test - 2947 rows
-
-# 
-# body_acc_x_test: 2947 rows, 128 cols
-# body_acc_y_test: 2947 rows, 128 cols
-# body_acc_z_test: 2947 rows, 128 cols
-# 
-# IGNORE Inertial Signals
-
-
+#----- Step 1
 #load data
 print("loading test data.....");flush.console()
 x_test<-read.table("./UCI HAR Dataset/test/X_test.txt",sep="",header=FALSE)
@@ -36,7 +17,7 @@ x_train<-read.table("./UCI HAR Dataset/train/X_train.txt",sep="",header=FALSE)
 y_train<-read.table("./UCI HAR Dataset/train/y_train.txt",sep="",header=FALSE)
 subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt",sep="",header=FALSE)
 
-#rename columns
+#rename columns 1:2
 print("Renaming subject and activity columns....");flush.console()
 colnames(subject_test)[colnames(subject_test)=="V1"]<-"subject"
 colnames(subject_train)[colnames(subject_train)=="V1"]<-"subject"
@@ -94,19 +75,16 @@ x<-cbind(all[1:2],stdAndMean)
 
 
 #------ step 3 
-#label actitivy column with activity_labels
-#subject_names<-read.table("./UCI HAR Dataset/train/subject_train.txt",sep="",header=FALSE)
+#replace values of activity with labels
 activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt",sep="",header=FALSE)
 actlbls<-as.character(activity_labels[[2]])
+x<-mutate(x,activity=actlbls[activity])
+
+#------ step 5
 if(!"package:dplyr" %in% search())
 	install.packages("dplyr")
 library(dplyr)
-#replace values of activity with labels
-x<-mutate(x,activity=actlbls[activity])
+
 xx<-group_by(x,subject,activity)
 xxx<-summarize_each(xx,funs(mean),3:88)
-#------ step 4 label - data set
-# t to time, f to freq
-# remove -(), etc
-# letters, numbers and points only
-# git
+
