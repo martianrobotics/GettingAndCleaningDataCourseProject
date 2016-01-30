@@ -109,3 +109,4 @@ xxx<-summarize_each(xx,funs(mean),3:88)
 # t to time, f to freq
 # remove -(), etc
 # letters, numbers and points only
+# git
