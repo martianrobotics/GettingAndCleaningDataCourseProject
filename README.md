@@ -43,12 +43,12 @@ The next step is to extract all columns that contain "mean" and "std" into stdAn
 
 The labels found in the activity_labels file will now be applied in the activity column, replacing numbers with readable strings.  The following substition shall be applied:
 
-#1 will be replaced by "WALKING"
-#2 will be replaced by "WALKING_UPSTAIRS"
-#3 will be replaced by "WALKING_DOWNSTAIRS"
-#4 will be replaced by "SITTING"
-#5 will be replaced by "STANDING"
-#6 will be replaced by "LAYING" 
+*1 will be replaced by "WALKING"
+*2 will be replaced by "WALKING_UPSTAIRS"
+*3 will be replaced by "WALKING_DOWNSTAIRS"
+*4 will be replaced by "SITTING"
+*5 will be replaced by "STANDING"
+*6 will be replaced by "LAYING" 
 
 ### step 4.  Summarize the data 
 The data.frame will now be summarized to extract the mean for each subject and activity pair to satisfy the one observation per row and one variable per column principle of tidy data.
