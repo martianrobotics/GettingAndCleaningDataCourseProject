@@ -28,6 +28,8 @@ if(file.exists(theFile)) subject_train<-read.table(theFile,sep="",header=FALSE) 
 
 theFile<-".//UCI HAR Dataset//features.txt"
 if(file.exists(theFile)) features<-read.table(theFile,sep="",header=FALSE) else stop("features.txt missing.")
+theFile<-".//UCI HAR Dataset//activity_labels.txt"
+if(file.exists(theFile)) activity_labels<-read.table(theFile,sep="",header=FALSE) else stop("activity_labels.txt missing.")
 
 #rename columns 1:2
 print("Renaming subject and activity columns....");flush.console()
@@ -66,20 +68,20 @@ allColNames<-as.character(features[[2]])
 # letters, numbers and points only
 # in order: 1) f-wholeword, 2) t-wholeword, 3), capitalize mean and std, 4) dots and alphanumeric only 
 print("Cleaning up column names....");flush.console()
-allColNames<-gsub("(-[a-z])","\\U\\1",allColNames,perl=TRUE) # capitalize characters after "-"
-allColNames<-gsub("^f","freq",allColNames,perl=TRUE) # f to freq
-allColNames<-gsub("^t","time",allColNames,perl=TRUE) # t to time
+allColNames<-gsub("(-[a-z])","\\U\\1",allColNames,perl=TRUE)     # capitalize characters after "-"
+allColNames<-gsub("^f","freq",allColNames,perl=TRUE)             # f to freq
+allColNames<-gsub("^t","time",allColNames,perl=TRUE)             # t to time
 allColNames<-gsub("(mean)|(std)","\\U\\1",allColNames,perl=TRUE) # capitalize mean and std
-allColNames<-gsub("(,)",".",allColNames,perl=TRUE) # replace "," with "."
-allColNames<-gsub("[()-]",".",allColNames,perl=TRUE) # replace ()- with .
-allColNames<-gsub("[\\.]+",".",allColNames,perl=TRUE) # replace multiple . with one .
-allColNames<-gsub("\\.$","",allColNames,perl=TRUE) # remove . at the end of string
+allColNames<-gsub("(,)",".",allColNames,perl=TRUE)               # replace "," with "."
+allColNames<-gsub("[()-]",".",allColNames,perl=TRUE)             # replace ()- with .
+allColNames<-gsub("[\\.]+",".",allColNames,perl=TRUE)            # replace multiple . with one .
+allColNames<-gsub("\\.$","",allColNames,perl=TRUE)               # remove . at the end of string
 
 #apply allColNames as column names of all[3:563] (first two are subject and activity)
 names(all)[3:563]<-allColNames
 
 #extract std and mean
-print("Extractubg std and mean....");flush.console()
+print("Extracting std and mean....");flush.console()
 stdAndMean<-all[,grepl("Std|Mean",colnames(all))]
 
 print("Binding....");flush.console()
@@ -88,17 +90,20 @@ x<-cbind(all[1:2],stdAndMean)
 
 #------ step 3 
 #replace values of activity with labels
-activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt",sep="",header=FALSE)
+
 actlbls<-as.character(activity_labels[[2]])
 
-#------ step 5
+
 if(!("package:dplyr" %in% search()))
 	install.packages("dplyr")
 library(dplyr)
 x<-mutate(x,activity=actlbls[activity])
+
+#------ step 5
+print("Summarizing data....");flush.console()
 xx<-group_by(x,subject,activity)
 tidydata<-summarize_each(xx,funs(mean),3:88)
+
 print("Creating tidy data....");flush.console()
-tidyDataFilename<-"TidyData.txt"
-write.table(tidydata,tidyDataFilename);
+write.table(tidydata,tidyDataFilename,row.names=FALSE);
 cat("Tidy data written to ",tidyDataFilename)
