@@ -2,6 +2,8 @@ README
 =======
 Explanation of how run_analysis.R works.
 -----------
+Original dataset: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+----------- 
  
 ### Step 1. Load the data files
 The program expects to load the data files from the folder called "UCI HAR Dataset."  If this folder is missing, the program gives a simple instruction on how to obtain the data and ends.
@@ -50,6 +52,8 @@ The labels found in the activity_labels file will now be applied in the activity
 * 4 will be replaced by "SITTING"
 * 5 will be replaced by "STANDING"
 * 6 will be replaced by "LAYING" 
+
+x<-cbind(all[1:2],stdAndMean)
 
 ### Step 4.  Summarize the data and create output file
 The data.frame will now be summarized to extract the mean for each subject and activity pair to satisfy the one observation per row and one variable per column principle of tidy data.
