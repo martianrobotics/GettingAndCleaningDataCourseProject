@@ -5,17 +5,26 @@
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
+if(!(file.exists("UCI HAR Dataset")))
+	stop("The folder 'UCI HAR Dataset' could not be located.")
+	
 #----- Step 1
 #load data
-print("loading test data.....");flush.console()
-x_test<-read.table("./UCI HAR Dataset/test/X_test.txt",sep="",header=FALSE)
-y_test<-read.table("./UCI HAR Dataset/test/y_test.txt",sep="",header=FALSE)
-subject_test<-read.table("./UCI HAR Dataset/test/subject_test.txt",sep="",header=FALSE)
+print("Loading test data.....");flush.console()
+theFile<-".//UCI HAR Dataset//test//X_test.txt"
+if(file.exists(theFile)) x_test<-read.table(theFile,sep="",header=FALSE) else stop("X_test missing.")
+theFile<-".//UCI HAR Dataset//test//y_test.txt"
+if(file.exists(theFile)) y_test<-read.table(theFile,sep="",header=FALSE) else stop("y_test missing.")
+theFile<-".//UCI HAR Dataset//test//subject_test.txt"
+if(file.exists(theFile)) subject_test<-read.table(theFile,sep="",header=FALSE) else stop("subject_test missing.")
 
-print("loading train data....");flush.console()
-x_train<-read.table("./UCI HAR Dataset/train/X_train.txt",sep="",header=FALSE)
-y_train<-read.table("./UCI HAR Dataset/train/y_train.txt",sep="",header=FALSE)
-subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt",sep="",header=FALSE)
+print("Loading train data....");flush.console()
+theFile<-".//UCI HAR Dataset//train//X_train.txt"
+if(file.exists(theFile)) x_train<-read.table(theFile,sep="",header=FALSE) else stop("X_train missing.")
+theFile<-".//UCI HAR Dataset//train//y_train.txt"
+if(file.exists(theFile)) y_train<-read.table(theFile,sep="",header=FALSE) else stop("y_test missing.")
+theFile<-".//UCI HAR Dataset//train//subject_train.txt"
+if(file.exists(theFile)) subject_train<-read.table(theFile,sep="",header=FALSE) else stop("subject_train missing.")
 
 #rename columns 1:2
 print("Renaming subject and activity columns....");flush.console()
@@ -78,13 +87,15 @@ x<-cbind(all[1:2],stdAndMean)
 #replace values of activity with labels
 activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt",sep="",header=FALSE)
 actlbls<-as.character(activity_labels[[2]])
-x<-mutate(x,activity=actlbls[activity])
 
 #------ step 5
-if(!"package:dplyr" %in% search())
+if(!("package:dplyr" %in% search()))
 	install.packages("dplyr")
 library(dplyr)
-
+x<-mutate(x,activity=actlbls[activity])
 xx<-group_by(x,subject,activity)
-xxx<-summarize_each(xx,funs(mean),3:88)
-
+tidydata<-summarize_each(xx,funs(mean),3:88)
+print("Creating tidy data....");flush.console()
+tidyDataFilename<-"TidyData.txt"
+write.table(tidydata,tidyDataFilename);
+cat("Tidy data written to ",tidyDataFilename)
