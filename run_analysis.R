@@ -103,7 +103,7 @@ x<-mutate(x,activity=actlbls[activity])
 print("Summarizing data....");flush.console()
 xx<-group_by(x,subject,activity)
 tidydata<-summarize_each(xx,funs(mean),3:88)
-
+tidyDataFilename<-"tidyData.txt"
 print("Creating tidy data....");flush.console()
 write.table(tidydata,tidyDataFilename,row.names=FALSE);
 cat("Tidy data written to ",tidyDataFilename)
