@@ -35,8 +35,6 @@ allColNames<-as.character(features[[2]])
 
 ### Clean up column names using regular expressions
 
-Clean up allColNames 
-
 Apply the contents of features.txt to a data.frame called features.
 The following steps will be applied to the list:
 * capitalize characters after "-"
@@ -49,16 +47,19 @@ The following steps will be applied to the list:
 * remove . at the end of string
 
 Apply the cleaned up list as the column names of the "all" data.frame from columns 3:563. The first two columns are subject and activity.
+
 names(all)[3:563]<-allColNames
 
 Now that the all data.frame has proper column names, extract all columns that contain "mean" and "std" into stdAndMean.
+
 stdAndMean<-all[,grepl("Std|Mean",colnames(all))]
 
 Create a new data.frame called x that binds the first two columns of all and the extracted standard deviation and mean columns.
+
 x<-cbind(all[1:2],stdAndMean)
 
 ### Apply the proper activity labels to the activity column
-Use the mutate function of dplyer to replace numeric data in the activity column of the x dataframe with the proper activity labels
+Use the mutate function of the dplyer library to replace numeric data in the activity column of the x dataframe with the proper activity labels
 x<-mutate(x,activity=actlbls[activity])
 
 * 1 will be replaced by "WALKING"
@@ -76,5 +77,6 @@ Use the summarize_each function to apply mean function to each group in the prev
 tidydata<-summarize_each(xx,funs(mean),3:88)
 
 Finally, write the tidydata table to "TidyData.txt"
+
 write.table(tidydata,tidyDataFilename);
 
