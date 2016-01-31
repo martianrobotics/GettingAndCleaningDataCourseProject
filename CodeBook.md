@@ -94,13 +94,13 @@ Variables derived from original dataset
 
 'mean' was prepended to denote that mean value was computed for all variables across all experiments for each group (subject, activity)
 
-Acc/Gyro= accelerometer and gyroscope sensors used in experiments
-Time=time domain signal
-Body/Gravity= the acceleration signal was then separated into body and gravity acceleration signals (meanTimeBodyAccXYZ and meanTimeGravityAccXYZ)
-Jerk=the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (meanTimeBodyAccJerkXYZ and meanTimeBodyGyroJerkXYZ)
-Mag=the magnitude of these three-dimensional signals were calculated using the Euclidean norm (meanTimeBodyAccMag, meanTimeGravityAccMag, meanTimeBodyAccJerkMag, meanTimeBodyGyroMag, meanTimeBodyGyroJerkMag).
-Frequency=finally, Fast Fourier Transform (FFT) was applied to some of these signals producing meanFrequencyBodyAccXYZ, meanFrequencyBodyAccJerkXYZ, meanFrequencyBodyGyroXYZ, meanFrequencyBodyAccJerkMag, meanFrequencyBodyGyroMag, ,meanFrequencyBodyGyroJerkMag
-XYZ=denotes 3-axial raw signals in the X, Y and Z directions
+* Acc/Gyro= accelerometer and gyroscope sensors used in experiments
+* Time=time domain signal
+* Body/Gravity= the acceleration signal was then separated into body and gravity acceleration signals (meanTimeBodyAccXYZ and meanTimeGravityAccXYZ)
+* Jerk=the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (meanTimeBodyAccJerkXYZ and meanTimeBodyGyroJerkXYZ)
+* Mag=the magnitude of these three-dimensional signals were calculated using the Euclidean norm (meanTimeBodyAccMag, meanTimeGravityAccMag, meanTimeBodyAccJerkMag, meanTimeBodyGyroMag, meanTimeBodyGyroJerkMag).
+* Frequency=finally, Fast Fourier Transform (FFT) was applied to some of these signals producing meanFrequencyBodyAccXYZ, meanFrequencyBodyAccJerkXYZ, meanFrequencyBodyGyroXYZ, meanFrequencyBodyAccJerkMag, meanFrequencyBodyGyroMag, ,meanFrequencyBodyGyroJerkMag
+* XYZ=denotes 3-axial raw signals in the X, Y and Z directions
 
 All measurements are in Hz
 
