@@ -6,7 +6,7 @@
 
 
 if(!(file.exists("UCI HAR Dataset")))
-	stop("The folder 'UCI HAR Dataset' could not be located.")
+	stop("The folder 'UCI HAR Dataset' could not be located.  Please download and unzip the required data here: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip")
 	
 #----- Step 1
 #load data
@@ -25,6 +25,9 @@ theFile<-".//UCI HAR Dataset//train//y_train.txt"
 if(file.exists(theFile)) y_train<-read.table(theFile,sep="",header=FALSE) else stop("y_test missing.")
 theFile<-".//UCI HAR Dataset//train//subject_train.txt"
 if(file.exists(theFile)) subject_train<-read.table(theFile,sep="",header=FALSE) else stop("subject_train missing.")
+
+theFile<-".//UCI HAR Dataset//features.txt"
+if(file.exists(theFile)) features<-read.table(theFile,sep="",header=FALSE) else stop("features.txt missing.")
 
 #rename columns 1:2
 print("Renaming subject and activity columns....");flush.console()
@@ -52,7 +55,7 @@ all<-rbind(test,train)
 #apply features.txt to all(v1+2:v561+2)
 #features contains names of x_test,x_train
 #Clean it up to be more readable
-features<-read.table("./UCI HAR Dataset/features.txt",sep="",header=FALSE)
+
 
 #create a vector of names from the 2nd column of features
 allColNames<-as.character(features[[2]])
