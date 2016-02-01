@@ -83,11 +83,9 @@ write.table(tidydata,tidyDataFilename);
 
 ###Variables
 
-* subject
-  from original data set - an identifier of the subject that carried out the experiment.
+* subject - from original data set - an identifier of the subject that carried out the experiment.
 
-* activity
-  from original data set - the activity the subject participated in which measurements were taken. these include walking, walking upstairs/downstairs, sitting, standing
+* activity - from original data set - the activity the subject participated in which measurements were taken. these include walking, walking upstairs/downstairs, sitting, standing
 
 Variables derived from original dataset
 ---------------------------------------
