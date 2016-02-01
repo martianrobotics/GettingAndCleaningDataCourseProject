@@ -83,11 +83,11 @@ write.table(tidydata,tidyDataFilename);
 
 ###Variables
 
-subject
-- from original data set - an identifier of the subject that carried out the experiment.
+* subject
+  from original data set - an identifier of the subject that carried out the experiment.
 
-activity
-- from original data set - the activity the subject participated in which measurements were taken. these include walking, walking upstairs/downstairs, sitting, standing
+* activity
+  from original data set - the activity the subject participated in which measurements were taken. these include walking, walking upstairs/downstairs, sitting, standing
 
 Variables derived from original dataset
 ---------------------------------------
@@ -104,47 +104,89 @@ Variables derived from original dataset
 
 All measurements are in Hz
 
-"subject"                             "activity"                           
-"timeBodyAcc.Mean.X"                  "timeBodyAcc.Mean.Y"                 
-"timeBodyAcc.Mean.Z"                  "timeBodyAcc.Std.X"                  
-"timeBodyAcc.Std.Y"                   "timeBodyAcc.Std.Z"                  
-"timeGravityAcc.Mean.X"               "timeGravityAcc.Mean.Y"              
-"timeGravityAcc.Mean.Z"               "timeGravityAcc.Std.X"               
-"timeGravityAcc.Std.Y"                "timeGravityAcc.Std.Z"               
-"timeBodyAccJerk.Mean.X"              "timeBodyAccJerk.Mean.Y"             
-"timeBodyAccJerk.Mean.Z"              "timeBodyAccJerk.Std.X"              
-"timeBodyAccJerk.Std.Y"               "timeBodyAccJerk.Std.Z"              
-"timeBodyGyro.Mean.X"                 "timeBodyGyro.Mean.Y"                
-"timeBodyGyro.Mean.Z"                 "timeBodyGyro.Std.X"                 
-"timeBodyGyro.Std.Y"                  "timeBodyGyro.Std.Z"                 
-"timeBodyGyroJerk.Mean.X"             "timeBodyGyroJerk.Mean.Y"            
-"timeBodyGyroJerk.Mean.Z"             "timeBodyGyroJerk.Std.X"             
-"timeBodyGyroJerk.Std.Y"              "timeBodyGyroJerk.Std.Z"             
-"timeBodyAccMag.Mean"                 "timeBodyAccMag.Std"                 
-"timeGravityAccMag.Mean"              "timeGravityAccMag.Std"              
-"timeBodyAccJerkMag.Mean"             "timeBodyAccJerkMag.Std"             
-"timeBodyGyroMag.Mean"                "timeBodyGyroMag.Std"                
-"timeBodyGyroJerkMag.Mean"            "timeBodyGyroJerkMag.Std"            
-"freqBodyAcc.Mean.X"                  "freqBodyAcc.Mean.Y"                 
-"freqBodyAcc.Mean.Z"                  "freqBodyAcc.Std.X"                  
-"freqBodyAcc.Std.Y"                   "freqBodyAcc.Std.Z"                  
-"freqBodyAcc.MeanFreq.X"              "freqBodyAcc.MeanFreq.Y"             
-"freqBodyAcc.MeanFreq.Z"              "freqBodyAccJerk.Mean.X"             
-"freqBodyAccJerk.Mean.Y"              "freqBodyAccJerk.Mean.Z"             
-"freqBodyAccJerk.Std.X"               "freqBodyAccJerk.Std.Y"              
-"freqBodyAccJerk.Std.Z"               "freqBodyAccJerk.MeanFreq.X"         
-"freqBodyAccJerk.MeanFreq.Y"          "freqBodyAccJerk.MeanFreq.Z"         
-"freqBodyGyro.Mean.X"                 "freqBodyGyro.Mean.Y"                
-"freqBodyGyro.Mean.Z"                 "freqBodyGyro.Std.X"                 
-"freqBodyGyro.Std.Y"                  "freqBodyGyro.Std.Z"                 
-"freqBodyGyro.MeanFreq.X"             "freqBodyGyro.MeanFreq.Y"            
-"freqBodyGyro.MeanFreq.Z"             "freqBodyAccMag.Mean"                
-"freqBodyAccMag.Std"                  "freqBodyAccMag.MeanFreq"            
-"freqBodyBodyAccJerkMag.Mean"         "freqBodyBodyAccJerkMag.Std"         
-"freqBodyBodyAccJerkMag.MeanFreq"     "freqBodyBodyGyroMag.Mean"           
-"freqBodyBodyGyroMag.Std"             "freqBodyBodyGyroMag.MeanFreq"       
-"freqBodyBodyGyroJerkMag.Mean"        "freqBodyBodyGyroJerkMag.Std"        
-"freqBodyBodyGyroJerkMag.MeanFreq"    "angle.tBodyAccMean.gravity"         
-"angle.tBodyAccJerkMean.gravityMean"  "angle.tBodyGyroMean.gravityMean"    
-"angle.tBodyGyroJerkMean.gravityMean" "angle.X.gravityMean"                
-"angle.Y.gravityMean"                 "angle.Z.gravityMean"      
+* timeBodyAcc.Mean.X                  
+* timeBodyAcc.Mean.Y                 
+* timeBodyAcc.Mean.Z                  
+* timeBodyAcc.Std.X                  
+* timeBodyAcc.Std.Y                   
+* timeBodyAcc.Std.Z                  
+* timeGravityAcc.Mean.X               
+* timeGravityAcc.Mean.Y              
+* timeGravityAcc.Mean.Z               
+* timeGravityAcc.Std.X               
+* timeGravityAcc.Std.Y                
+* timeGravityAcc.Std.Z               
+* timeBodyAccJerk.Mean.X              
+* timeBodyAccJerk.Mean.Y             
+* timeBodyAccJerk.Mean.Z              
+* timeBodyAccJerk.Std.X              
+* timeBodyAccJerk.Std.Y               
+* timeBodyAccJerk.Std.Z              
+* timeBodyGyro.Mean.X                 
+* timeBodyGyro.Mean.Y                
+* timeBodyGyro.Mean.Z                 
+* timeBodyGyro.Std.X                 
+* timeBodyGyro.Std.Y                  
+* timeBodyGyro.Std.Z                 
+* timeBodyGyroJerk.Mean.X             
+* timeBodyGyroJerk.Mean.Y            
+* timeBodyGyroJerk.Mean.Z             
+* timeBodyGyroJerk.Std.X             
+* timeBodyGyroJerk.Std.Y              
+* timeBodyGyroJerk.Std.Z             
+* timeBodyAccMag.Mean                 
+* timeBodyAccMag.Std                 
+* timeGravityAccMag.Mean              
+* timeGravityAccMag.Std              
+* timeBodyAccJerkMag.Mean             
+* timeBodyAccJerkMag.Std             
+* timeBodyGyroMag.Mean                
+* timeBodyGyroMag.Std                
+* timeBodyGyroJerkMag.Mean            
+* timeBodyGyroJerkMag.Std            
+* freqBodyAcc.Mean.X                  
+* freqBodyAcc.Mean.Y                 
+* freqBodyAcc.Mean.Z                  
+* freqBodyAcc.Std.X                  
+* freqBodyAcc.Std.Y                   
+* freqBodyAcc.Std.Z                  
+* freqBodyAcc.MeanFreq.X              
+* freqBodyAcc.MeanFreq.Y             
+* freqBodyAcc.MeanFreq.Z              
+* freqBodyAccJerk.Mean.X             
+* freqBodyAccJerk.Mean.Y              
+* freqBodyAccJerk.Mean.Z             
+* freqBodyAccJerk.Std.X               
+* freqBodyAccJerk.Std.Y              
+* freqBodyAccJerk.Std.Z               
+* freqBodyAccJerk.MeanFreq.X         
+* freqBodyAccJerk.MeanFreq.Y          
+* freqBodyAccJerk.MeanFreq.Z         
+* freqBodyGyro.Mean.X                 
+* freqBodyGyro.Mean.Y                
+* freqBodyGyro.Mean.Z                 
+* freqBodyGyro.Std.X                 
+* freqBodyGyro.Std.Y                  
+* freqBodyGyro.Std.Z                 
+* freqBodyGyro.MeanFreq.X             
+* freqBodyGyro.MeanFreq.Y            
+* freqBodyGyro.MeanFreq.Z             
+* freqBodyAccMag.Mean                
+* freqBodyAccMag.Std                  
+* freqBodyAccMag.MeanFreq            
+* freqBodyBodyAccJerkMag.Mean         
+* freqBodyBodyAccJerkMag.Std         
+* freqBodyBodyAccJerkMag.MeanFreq     
+* freqBodyBodyGyroMag.Mean           
+* freqBodyBodyGyroMag.Std             
+* freqBodyBodyGyroMag.MeanFreq       
+* freqBodyBodyGyroJerkMag.Mean        
+* freqBodyBodyGyroJerkMag.Std        
+* freqBodyBodyGyroJerkMag.MeanFreq    
+* angle.tBodyAccMean.gravity         
+* angle.tBodyAccJerkMean.gravityMean  
+* angle.tBodyGyroMean.gravityMean    
+* angle.tBodyGyroJerkMean.gravityMean 
+* angle.X.gravityMean                
+* angle.Y.gravityMean                 
+* angle.Z.gravityMean      
